@@ -16,7 +16,7 @@ export function Countdown() {
     function startCountdown() {
         setActive(true);
     }
-    
+
     useEffect(() => {
         if (active && time > 0) {
             setTimeout(() => {
@@ -39,8 +39,8 @@ export function Countdown() {
                 </div>
             </div>
 
-            <button 
-                type="button" 
+            <button
+                type="button"
                 className={styles.countdownButton}
                 onClick={startCountdown}
             >
