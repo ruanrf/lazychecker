@@ -1,48 +1,24 @@
 /* eslint-disable import/prefer-default-export */
-import { useState, useEffect, useContext } from 'react';
 import { AiFillCaretRight, AiFillCheckCircle } from 'react-icons/ai';
+import { useState, useEffect, useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
+
+import { CountdownContext } from '../contexts/CountdownContext';
 
 import styles from '../styles/components/Countdown.module.css';
 
-let countdownTimeout: NodeJS.Timeout;
-
 export function Countdown() {
-  const { startNewChallenge } = useContext(ChallengesContext);
-
-  const contextData = useContext(ChallengesContext);
-
-  const [time, setTime] = useState(4);
-  const [isActive, setIsActive] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
-
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
+  const {
+    minutes,
+    seconds,
+    isFinished,
+    isActive,
+    resetCountdown,
+    startCountdown,
+  } = useContext(CountdownContext);
 
   const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split(''); // padStart: se a string não possui 2 espaços, preenche com '0'
   const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split(''); // padStart: se a string não possui 2 espaços, preenche com '0'
-
-  function startCountdown() {
-    setIsActive(true);
-  }
-
-  function resetCountdown() {
-    clearTimeout(countdownTimeout);
-    setIsActive(false);
-    setTime(4);
-  }
-
-  useEffect(() => {
-    if (isActive && time > 0) {
-      countdownTimeout = setTimeout(() => {
-        setTime(time - 1);
-      }, 1000);
-    } else if (isActive && time === 0) {
-      setIsFinished(true);
-      setIsActive(false);
-      startNewChallenge();
-    }
-  }, [isActive, time, startNewChallenge]);
 
   return (
     <div>
