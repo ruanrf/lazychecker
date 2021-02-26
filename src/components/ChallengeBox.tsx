@@ -1,23 +1,30 @@
 /* eslint-disable import/prefer-default-export */
+import { useContext } from 'react';
+
+import { ChallengesContext } from '../contexts/ChallengesContext';
 import styles from '../styles/components/ChallengeBox.module.css';
 
 export function ChallengeBox() {
-  const isChallengeActive = true;
+  const { activeChallenge, resetChallenge } = useContext(ChallengesContext);
 
   return (
     <div className={styles.challengeBoxContainer}>
-      {isChallengeActive ? (
+      {activeChallenge ? (
         <div className={styles.challengeActive}>
-          <header>Ganhe 400 exp</header>
+          <header>Ganhe {activeChallenge.amount} exp</header>
 
           <main>
-            <img src="icons/body.svg" alt="Challenge" />
+            <img src={`icons/${activeChallenge.type}.svg`} alt="Challenge" />
             <strong>Novo desafio!</strong>
-            <p>Do something</p>
+            <p>{activeChallenge.description}</p>
           </main>
 
           <footer>
-            <button type="button" className={styles.challengeFailedButton}>
+            <button
+              type="button"
+              className={styles.challengeFailedButton}
+              onClick={resetChallenge}
+            >
               Falhei
             </button>
             <button type="button" className={styles.challengeSucceededButton}>

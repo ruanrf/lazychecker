@@ -1,13 +1,17 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable import/prefer-default-export */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { AiFillCaretRight, AiFillCheckCircle } from 'react-icons/ai';
+import { ChallengesContext } from '../contexts/ChallengesContext';
 
 import styles from '../styles/components/Countdown.module.css';
 
 let countdownTimeout: NodeJS.Timeout;
 
 export function Countdown() {
+  const { startNewChallenge } = useContext(ChallengesContext);
+
+  const contextData = useContext(ChallengesContext);
+
   const [time, setTime] = useState(4);
   const [isActive, setIsActive] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
@@ -36,8 +40,9 @@ export function Countdown() {
     } else if (isActive && time === 0) {
       setIsFinished(true);
       setIsActive(false);
+      startNewChallenge();
     }
-  }, [isActive, time]);
+  }, [isActive, time, startNewChallenge]);
 
   return (
     <div>
