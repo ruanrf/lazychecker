@@ -1,10 +1,11 @@
-import '../styles/global.css'
+/* eslint-disable react/jsx-props-no-spreading */
+import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
 
 // no arquivo "_app", de modo geral,
 // ficam componentes presentes em todas páginas da aplicação
