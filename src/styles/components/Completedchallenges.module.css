@@ -37,6 +37,7 @@
   color: var(--text);
   font-size: 0.7rem;
 }
+
 .resetUserData div button:active {
   border: none;
   color: var(--text);
