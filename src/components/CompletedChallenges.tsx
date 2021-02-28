@@ -1,18 +1,32 @@
 /* eslint-disable import/prefer-default-export */
-/* eslint-disable import/no-unresolved */
 import { useContext } from 'react';
+import { BiReset } from 'react-icons/bi';
 
 import { ChallengesContext } from '../contexts/ChallengesContext';
 
 import styles from '../styles/components/CompletedChallenges.module.css';
 
 export function CompletedChallenges() {
-  const { challengesCompleted } = useContext(ChallengesContext);
+  const { challengesCompleted, resetUserData } = useContext(ChallengesContext);
 
   return (
-    <div className={styles.completedChallengesContainer}>
-      <span>Desafios completos</span>
-      <span>{challengesCompleted}</span>
-    </div>
+    <>
+      <div className={styles.completedChallengesContainer}>
+        <span>Desafios completos</span>
+        <span>{String(challengesCompleted).padStart(2, '0')}</span>
+      </div>
+      <div className={styles.resetUserData}>
+        <p>
+          <button
+            type="button"
+            className={styles.resetUserData}
+            onClick={resetUserData}
+          >
+            resetar dados
+            <BiReset className={styles.biReset} />
+          </button>
+        </p>
+      </div>
+    </>
   );
 }

@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { AiFillCaretRight, AiFillCheckCircle } from 'react-icons/ai';
-import { useState, useEffect, useContext } from 'react';
-import { ChallengesContext } from '../contexts/ChallengesContext';
+import { useContext } from 'react';
 
 import { CountdownContext } from '../contexts/CountdownContext';
 
