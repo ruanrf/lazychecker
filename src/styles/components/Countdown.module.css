@@ -66,6 +66,7 @@
 .countdownButtonActive {
   background: var(--white);
   color: var(--title);
+  border-bottom: 4px solid var(--red);
 }
 
 .countdownButtonActive:not(:disabled):hover {
