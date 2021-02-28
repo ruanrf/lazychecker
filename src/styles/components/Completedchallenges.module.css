@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
 
-    margin: 3.5rem;
+    margin: 2rem 0 .3rem 0;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #d7d8da;
 
@@ -15,5 +15,34 @@
 }
 
 .completedChallengesContainer span:last-child {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.resetUserData {
+  margin: .5rem 0 2rem 0;
+}
+
+.resetUserData button {
+  background: none;
+  border: none;
+  outline: none;
+
+  height: 1rem;
+  width: 6rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 78%;
+
+  color: var(--text);
+  font-size: 0.7rem;
+}
+.resetUserData div button:active {
+  border: none;
+  color: var(--text);
+}
+
+.biReset {
+  margin-left: 0.3rem;
+  color: var(--red);
 }
